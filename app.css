@@ -1,0 +1,90 @@
+body {
+    background-color: #e3a958;
+    /* background-color: #c99246; */
+}
+
+.titleAndButtons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+/* Buttons */
+#startBtn {
+    background-color: #aaed02;
+    justify-content: center;
+    height: 15%;
+    width: 15%;
+}
+
+#startBtn:hover {
+    background-color: green;
+    color: white;
+    transition-duration: 0.5s;
+    
+}
+
+#resetBtn {
+    background-color: #cb73d1;
+    height: 15%;
+    width: 15%;
+}
+
+#resetBtn:hover {
+    background-color: #95549a;
+    color: white;
+    transition-duration: 0.5s;
+}
+
+/* Buttons */
+
+
+.scoreBoard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: #508ae0;
+}
+
+
+/* Game grud */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 606px;
+    height: 606px;
+}
+
+.square {
+    height: 200px;
+    width: 200px;
+
+    border: solid black 1px;
+    /* border-style: solid;
+    border-color: black; */
+}
+
+.mole {
+    background-image: url('chocChipCookies_whac-a-mole.png');
+    background-size: cover;
+}
+
+.broccoli {
+    background-image: url('Broccoli-.png');
+    background-size: cover;
+}
+
+/* Rules for images */
+
+#cookie-rule {
+    color: #aaed02;
+}
+
+#broccoli-rule {
+    color: #95549a
+}
+
+/* Use class to add atributes to a square or  element */
