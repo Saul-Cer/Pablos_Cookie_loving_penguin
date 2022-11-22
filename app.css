@@ -21,7 +21,7 @@ body {
 #startBtn:hover {
     background-color: green;
     color: white;
-    transition-duration: 0.5s;
+    transition-duration: 1s;
     
 }
 
@@ -86,5 +86,7 @@ body {
 #broccoli-rule {
     color: #95549a
 }
+
+
 
 /* Use class to add atributes to a square or  element */

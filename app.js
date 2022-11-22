@@ -22,22 +22,27 @@ let setTime = 10;
 let currentTime = setTime;
 let timerIdCookie = null;
 let timerIdBroccoli = null;
+let timerIdGridReset = null;
 
-let gridBoxList = [1,2,3,4,5,6,7,8,9];
-let gridOrginalNumberList = [1,2,3,4,5,6,7,8,9];
-let gridNumberList = [];
+let gridBoxList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let gridOrginalNumberList = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+let rndBox;
+
+// let gridNumberList = [];
 // making list to get random numbers from 
 
-function makeListofNum(totalNumbers) {
-    for (let i = 1; i <= totalNumbers; i++) {
-        gridNumberList.push(i);
-    }
-    return gridNumberList;
-}
+// function makeListofNum(totalNumbers) {
+//     for (let i = 1; i <= totalNumbers; i++) {
+//         gridNumberList.push(i);
+//     }
+//     return gridNumberList;
+// }
 
 
 function removeFromArray(arr, pos) {
-    arr.splice(pos - 1,1);
+    arr.splice(pos - 1, 1);
+    // console.log(arr)
     return arr
 }
 
@@ -49,11 +54,11 @@ function randomSquareCookie() {
         // square.classList.remove('broccoli')
         // gridNumberList = gridOrginalNumberList;
 
-        
+
         // check to see if list reset
         // console.log(gridNumberList);
     })
-
+    // resetArray();
 
     rndBox = Math.floor(Math.random() * 9);
     let randomSquare = squares[rndBox];
@@ -61,8 +66,10 @@ function randomSquareCookie() {
     hitPostitionCookie = randomSquare.id;
     // console.log(randomSquare.id)
     // removes id from list 
-    
     removeFromArray(gridBoxList, rndBox);
+
+
+
     // console.log(gridBoxList);
     //
 }
@@ -75,18 +82,29 @@ function randomSquareBroccoli() {
         square.classList.remove('broccoli')
     })
 
-    
+
     // let randomSquare = squares[Math.floor(Math.random() * 9)]
     // hitPostitionBroccoli = randomSquare.id;
 
-    
+
 
     // chooses with out using list
     // chooses with out using list
-    let randomSquare = squares[Math.floor(Math.random() * 9)];
+    // let randomSquare = squares[Math.floor(Math.random() * 8)];
+    // hitPostitionBroccoli = randomSquare.id;
+    // console.log(hitPostitionCookie);
+    // console.log(hitPostitionBroccoli);
+
+
+    //chooses with list
+    //uses 8 because cookie takes one of the grids boxes
+    rndBox = Math.floor(Math.random() * 8);
+    let randomSquare = squares[rndBox];
     hitPostitionBroccoli = randomSquare.id;
-    console.log(hitPostitionCookie);
-    console.log(hitPostitionBroccoli);
+    // attempt to reset list
+    // let gridBoxList = gridOrginalNumberList;
+    // console.log(gridBoxList)
+    
     // Checks if 
     while (hitPostitionCookie == hitPostitionBroccoli) {
         let randomSquare = squares[Math.floor(Math.random() * 9)]
@@ -98,7 +116,7 @@ function randomSquareBroccoli() {
     randomSquare.classList.add('broccoli');
 
     //resets array of numbers to choose from
-    
+
     // console.log(randomPosition)
 
     // code below not needed because its done in while loop
@@ -107,6 +125,8 @@ function randomSquareBroccoli() {
     // hitPostitionBroccoli = randomSquare.id;
     // gridNumberList = gridOrginalNumberList;
     // resetArray(gridNumberList);
+    
+    resetArray();
 }
 
 
@@ -141,8 +161,10 @@ squares.forEach(square => {
 
 
 
-function resetArray(arr) {
-    arr = gridOrginalNumberList;
+function resetArray() {
+    gridBoxList = gridOrginalNumberList.slice();
+    // console.log(gridBoxList)
+    return gridBoxList;
 }
 
 // handles the timing for each time the moal pops up
@@ -155,7 +177,7 @@ function broccoliSpawn() {
 }
 
 function listReset() {
-    timerIdBroccoli = setInterval(resetArray, 1000)
+    timerIdGridReset = setInterval(resetArray, 1000)
 }
 
 
@@ -167,7 +189,7 @@ let countDownTimerId = null;
 function countDown() {
     currentTime--;
     timeLeft.textContent = currentTime;
-    gridBoxList = gridOrginalNumberList;
+    // gridBoxList = gridOrginalNumberList;
 
     if (currentTime == 0) {
         // makes it so you can't click on items
@@ -253,7 +275,7 @@ startGame();
 
 // make a list to choose random numbers from with in a set list
 // if there are 9 total places (num 0-8)
-// the 2nd choice would be selected from a list of (0-7), numbers with in list are randomized 
+// the 2nd choice would be selected from a list of (0-7), numbers with in list are randomized
 
 // makes it so broccoli and cookie can never be in the same spot
 
